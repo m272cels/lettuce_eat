@@ -1,0 +1,46 @@
+#header {   
+  background-color: #444;
+  background-image: url(./young-people-eating.jpg);
+  background-size: contain;
+  margin-top: -20px;
+  margin-bottom: -20px;
+  padding-top: 150px;
+  background-attachment: relative;
+  background-position: center center;
+  min-height: 650px;
+  width: 100%;
+
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+  background-size: 100%;
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#header h1 {
+  color: #fff;
+  font-size: 45px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+h2.subtitle {
+  color: #fff;
+  font-size: 20px;
+}
+
+.boxed {
+  background-color: rgba(0,0,0,0.5);
+  display: inline-block;
+  padding: 1em;
+}
+
+.btn-theme {
+  color: #fff;
+  background-color: #fd680d;
+  margin-top: 5px;
+}
