@@ -2,8 +2,13 @@
   "name": "lettuce_eat",
   "version": "0.0.1",
   "description": "allows users to connect with other users for lunch",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/m272cels/lettuce_eat.git"
+  },
   "dependencies": {
     "body-parser": "^1.13.3",
+    "connect-flash": "^0.1.1",
     "express": "^4.13.3",
     "express-session": "^1.11.3",
     "mongoose": "^4.1.2",

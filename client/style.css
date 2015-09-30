@@ -1,7 +1,10 @@
-#header {   
+.nav-space {
+  padding-top: 50px;
+}
+
+#landing {   
   background-color: #444;
   background-image: url(./young-people-eating.jpg);
-  background-size: contain;
   margin-top: -20px;
   margin-bottom: -20px;
   padding-top: 150px;
@@ -21,7 +24,7 @@
   background-size: cover;
 }
 
-#header h1 {
+#landing h1 {
   color: #fff;
   font-size: 45px;
   font-weight: 700;
@@ -43,4 +46,14 @@ h2.subtitle {
   color: #fff;
   background-color: #fd680d;
   margin-top: 5px;
+}
+
+.no-pad {
+  padding: 0;
+}
+.no-mar {
+  margin: 0;
+}
+#search-button {
+  padding: 20px 16px;
 }

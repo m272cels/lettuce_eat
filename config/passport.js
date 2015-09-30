@@ -8,7 +8,7 @@ passport.serializeUser( function (user, done) {
 });
 
 passport.deserializeUser( function (id, done) {
-  User.findOne({_id: id}, '-password', function (err, user) {
+  User.findOne({_id: id}).exec( function (err, user) {
     done(err, user);
   })
 })
@@ -20,14 +20,14 @@ passport.use(new LocalStrategy({
     User.findOne({ email: username }, function (err, user) {
       if (err) { return done(err); }
       if (!user) {
-        console.log('no user found with this email')
-        return done(null, false, { message: 'Incorrect email.' });
+        // console.log('no user found with this email')
+        return done(null, false, { message: 'No account with this email exists.' });
       }
       if (!user.authenticate(password)) {
-        console.log('password is incorrect for this email')
+        // console.log('password is incorrect for this email')
         return done(null, false, { message: 'Incorrect password.' });
       }
-      console.log('successful login')
+      // console.log('successful login')
       return done(null, user);
     });
   }

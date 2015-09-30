@@ -5,16 +5,28 @@ module.exports = {
   register: function (req, res) {
     User.findOne({email: req.body.email}, function (err, result) {
       if (result) {
-        res.json({errors: {email: "An account with this email already exists!"}});
+        res.json(
+        {
+          errors: {
+            email: "An account with this email already exists!"
+          }
+        });
       }
       else {
         var user = new User(req.body);
+        user.provider = 'local';
         user.save( function (err, result) {
-          res.json(result);
+          req.login(user, function (err) {
+            res.json(req.user);
+          });
         });
       }
     });
   },
+  logOut: function (req, res) {
+    req.logout();
+    res.end();
+  }
   // logIn: function (req, res) {
   //   User.findOne({name: req.body.name}).deepPopulate('list._owner').exec( function (err, result) {
   //     if (result) {

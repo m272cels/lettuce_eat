@@ -11,18 +11,21 @@ module.exports = function (app) {
     users.register(req, res);
   });
 
-  app.post('/user/login', passport.authenticate('local'), function (req, res) {
-    // users.logIn(req, res);
-    res.json(req.session);
+  app.get('/login/fail', function (req, res) {
+    res.send(req.flash());
+  })
+
+  app.post('/user/login', passport.authenticate('local', {failureRedirect: '/login/fail', failureFlash: true}), function (req, res) {
+    res.json(req.user);
   });
 
   app.get('/user/info', function (req, res) {
-    res.json(req.session);
+    res.json(req.user);
   })
 
-  // app.get('/user/all', function (req, res) {
-  //   users.getAll(req, res);
-  // });
+  app.get('/user/logout', function (req, res) {
+    users.logOut(req, res);
+  });
 
   // app.post('/list/add', function (req, res) {
   //   items.add(req, res);

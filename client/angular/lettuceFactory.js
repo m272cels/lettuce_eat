@@ -1,29 +1,21 @@
 lettuceEat.factory('lettuceFactory', function ($http) {
-  var users = [];
-  var user = {};
+  // var users = [];
+  // var user = {};
 
   var factory = {};
   factory.logIn = function (userInfo, callback) {
     $http.post('/user/login', userInfo).then( function (response) {
-      console.log(response.data);
-      // user = response.data;
-      // callback();
-
-    }, function (error) {
-      console.log('bad login');
-      console.log(error);
+      callback(response.data);
+    });
+  }
+  factory.logOut = function (callback) {
+    $http.get('/user/logout').then( function () {
+      callback();
     });
   }
   factory.registerUser = function (newUser, callback) {
     $http.post('/user/register', newUser).then( function (response) {
-      console.log(response.data.errors);
-      if (response.data.errors) {
-        callback(response.data.errors);
-      }
-      else {
-        user = response.data;
-        callback();
-      }
+      callback(response.data);
     });
   }
   factory.getUser = function (callback) {
