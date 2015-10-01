@@ -7,35 +7,24 @@ module.exports = function (app) {
     res.render('index.html');
   });
 
-  app.post('/user/register', function (req, res) {
-    users.register(req, res);
-  });
+  app.post('/user/register', passport.authenticate('local-register', {
+    successRedirect: '/dashboard',
+    failureRedirect: '/landing',
+    failureFlash: true
+  }));
 
-  app.get('/login/fail', function (req, res) {
-    res.send(req.flash());
-  })
-
-  app.post('/user/login', passport.authenticate('local', {failureRedirect: '/login/fail', failureFlash: true}), function (req, res) {
-    res.json(req.user);
-  });
-
-  app.get('/user/info', function (req, res) {
-    res.json(req.user);
-  })
+  app.post('/user/login', passport.authenticate('local-login', {
+    successRedirect: '/dashboard',
+    failureRedirect: '/landing',
+    failureFlash: true
+  }));
 
   app.get('/user/logout', function (req, res) {
     users.logOut(req, res);
   });
 
-  // app.post('/list/add', function (req, res) {
-  //   items.add(req, res);
+  // app.get('/user/info', function (req, res) {
+  //   res.json(req.user);
   // });
 
-  // app.get('/user/:id', function (req, res) {
-  //   users.getOne(req, res);
-  // })
-
-  // app.get('/item/done/:id', function (req, res) {
-  //   items.toggleDone(req, res);
-  // });
 }

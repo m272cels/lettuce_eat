@@ -13,35 +13,45 @@ passport.deserializeUser( function (id, done) {
   })
 })
 
-passport.use(new LocalStrategy({
+passport.use("local-login", new LocalStrategy({
     usernameField: 'email'
   },
   function (username, password, done) {
     User.findOne({ email: username }, function (err, user) {
-      if (err) { return done(err); }
+      if (err) { 
+        return done(err);
+      }
       if (!user) {
-        // console.log('no user found with this email')
         return done(null, false, { message: 'No account with this email exists.' });
       }
       if (!user.authenticate(password)) {
-        // console.log('password is incorrect for this email')
         return done(null, false, { message: 'Incorrect password.' });
       }
-      // console.log('successful login')
       return done(null, user);
     });
-  }
-));
-// passport.use(new LocalStrategy(
-//   function(username, password, done) {
-//     User.findOne({ username: username }, function (err, user) {
-//       if (err) { return done(err); }
-//       if (!user) { return done(null, false); }
-//       if (!user.verifyPassword(password)) { return done(null, false); }
-//       return done(null, user);
-//     });
-//   }
-// ));
+  })
+);
+
+passport.use("local-register", new LocalStrategy({
+    usernameField: 'email'
+  },
+  function (username, password, done) {
+    User.findOne({ email: username }, function (err, user) {
+      if (err) { 
+        return done(err);
+      }
+      if (user) {
+        return done(null, false, { message: 'A user with this email already exists.' });
+      }
+      var newUser = new User();
+      newUser.local.email = username;
+      newUser.local.password = newUser.generateHash(password);
+      newUser.save( function (err) {
+        return done(null, newUser);
+      })
+    });
+  })
+);
 
 // passport.use(new LinkedInStrategy({
 //     consumerKey: LINKEDIN_API_KEY,
