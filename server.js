@@ -12,16 +12,16 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(session({
-  secret: 'abc123',
+  secret: 'let us lettuce',
   saveUninitialized: true,
   resave: true
 }));
-app.use(flash());
+// app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
 require('./config/mongoose');
-require('./config/passport');
+require('./config/passport')(passport);
 require('./config/routes')(app);
 
 app.listen(8787, function () {

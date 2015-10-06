@@ -7,13 +7,13 @@ lettuceEat.controller('usersController', function ($scope, $location, lettuceFac
     else {
       $scope.user = user;
     }
-  })
+  });
 
   $scope.logIn = function () {
     $scope.logErrors = {};
-    lettuceFactory.logIn($scope.user, function (user) {
-      if (user.error) {
-        $scope.logErrors.error = user.error[0]
+    lettuceFactory.logIn($scope.userInfo, function (user) {
+      if (user.message) {
+        $scope.logErrors.message = user.message;
       }
       else {
         $('#loginModal').modal('hide');
@@ -23,31 +23,27 @@ lettuceEat.controller('usersController', function ($scope, $location, lettuceFac
       }
     });
   }
+
   $scope.logOut = function () {
     lettuceFactory.logOut( function () {
       $scope.user = undefined;
-      $location.path('/landing');
+      $location.path('/');
     });
   }
+
   $scope.register = function () {
     $scope.regErrors = {};
-    if ($scope.newUser.password !== $scope.newUser.confirm) {
-      $scope.regErrors.confirm = "Please make sure your passwords match.";
-    }
-    else {
-      $scope.newUser.confirm = undefined;
-      lettuceFactory.registerUser($scope.newUser, function (user) {
-        if (user.errors) {
-          $scope.regErrors = user.errors;
-        }
-        else {
-          console.log(user);
-          $('#registerModal').modal('hide');
-          $scope.user = user;
-          $location.path('/dashboard');
-        }
-      });
-    }
+    lettuceFactory.registerUser($scope.newUser, function (user) {
+      if (user.message) {
+        $scope.regErrors.message = user.message;
+      }
+      else {
+        console.log(user);
+        $('#registerModal').modal('hide');
+        $scope.user = user;
+        $location.path('/dashboard');
+      }
+    });
   }
 
 })

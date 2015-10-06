@@ -5,13 +5,15 @@ var bcrypt = require('bcrypt-nodejs');
 var Schema = mongoose.Schema;
 
 var UserSchema = mongoose.Schema({
-  first_name: String,
-  last_name: String,
-  email: String,
-  password: String,
-  provider: String,
-  providerId: String,
-  providerData: {}
+  local: {
+    first_name: String,
+    last_name: String,
+    email: String,
+    password: String
+  },
+  linkedin: {
+    
+  }
   // events: [{type: Schema.Types.ObjectId, ref: 'Event'}]
 });
 // UserSchema.plugin(deepPopulate);

@@ -1,48 +1,44 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
+var passport = require('passport');
 
 module.exports = {
   register: function (req, res) {
-    User.findOne({email: req.body.email}, function (err, result) {
-      if (result) {
-        res.json(
-        {
-          errors: {
-            email: "An account with this email already exists!"
-          }
-        });
+    passport.authenticate('local-register', function (err, user, info) {
+      if (err) {
+        console.log(err);
       }
-      else {
-        var user = new User(req.body);
-        user.provider = 'local';
-        user.save( function (err, result) {
-          req.login(user, function (err) {
-            res.json(req.user);
-          });
-        });
+      if (!user) {
+        res.send(info);
       }
-    });
+      req.logIn(user, function (err) {
+        if (err) {
+          console.log(err);
+        }
+        res.json(user);
+      });
+    })(req, res); 
+  },
+  logIn: function (req, res) {
+    passport.authenticate('local-login', function (err, user, info) {
+      if (err) {
+        console.log(err);
+      }
+      if (!user) {
+        return res.send(info);
+      }
+      req.logIn(user, function (err) {
+        if (err) {
+          console.log(err);
+        }
+        res.json(user);
+      });
+    })(req, res); 
   },
   logOut: function (req, res) {
     req.logout();
     res.end();
   }
-  // logIn: function (req, res) {
-  //   User.findOne({name: req.body.name}).deepPopulate('list._owner').exec( function (err, result) {
-  //     if (result) {
-  //       res.json(result);
-  //     }
-  //     else {
-  //       var user = new User({
-  //         name: req.body.name,
-  //         list: []
-  //       });
-  //       user.save( function (err, result) {
-  //         res.json(result);
-  //       });
-  //     }
-  //   });
-  // },
   // // getAll: function (req, res) {
   //   User.find({}, function (err, results) {
   //     if (err) {

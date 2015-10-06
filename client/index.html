@@ -22,7 +22,14 @@
     $(document).ready( function () {
       $('.modal').on('hidden.bs.modal', function () {
         $(this).find('input').val('');
-      })
+      });
+
+      $('#closeReg').click(function () {
+        $('#registerModal').modal('hide');
+      });
+      $('#closeLogin').click(function () {
+        $('#loginModal').modal('hide');
+      });
     })
     </script>
   </head>
@@ -43,7 +50,7 @@
             <li><a ng-hide="user" data-toggle="modal" href="#loginModal">Log in</a></li>
             <li><a ng-hide="user" data-toggle="modal" href="#registerModal">Register</a></li>
             <li><a ng-show="user" href="#/dashboard">Profile</a></li>
-            <li><a ng-show="user" ng-click="logOut()">Log out</a></li>
+            <li><a ng-show="user" href="" ng-click="logOut()">Log out</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -53,20 +60,25 @@
   <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <!-- <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Login</h4>
-      </div>
+      </div> -->
       <div class="modal-body">
+        <button class="btn btn-primary form-control">Log in with LinkedIn</button>
+        <div>
+          <span>or</span>
+          <hr>
+        </div>
         <form name="loginForm">
-          <span class="text-danger" ng-bind="logErrors.error"></span>
-          <input type="email" class="form-control" placeholder="Email" ng-model="user.email" ng-required="true" required>
-          <input type="password" class="form-control" placeholder="Password" ng-model="user.password" ng-required="true" required>
+          <span class="text-danger" ng-bind="logErrors.message"></span>
+          <input type="email" class="form-control" placeholder="Email" ng-model="userInfo.email" ng-required="true" required>
+          <input type="password" class="form-control" placeholder="Password" ng-model="userInfo.password" ng-required="true" required>
           <button ng-disabled="loginForm.$invalid" ng-click="logIn()" class="btn btn-success form-control">Sign in</button>
         </form>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary form-control">Sign in with LinkedIn</button>
+        <p>Don't have an account? <a id="closeLogin" data-toggle="modal" href="#registerModal">Register</a></p>
       </div>
     </div>
   </div>
@@ -74,25 +86,28 @@
   <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Register</h4>
-      </div>
+      <!-- <div class="modal-header"> -->
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+        <!-- <h4 class="modal-title" id="myModalLabel">Register</h4> -->
+      <!-- </div> -->
       <div class="modal-body">
+        <button class="btn btn-primary form-control">Register with LinkedIn</button>
+        <div>
+          <span>or</span>
+          <hr>
+        </div>
         <form name="regForm">
+          <span class="text-danger" ng-bind="regErrors.message"></span>
           <input type="text" class="form-control" placeholder="First Name" ng-model="newUser.first_name" ng-required="true" required>
           <input type="text" class="form-control" placeholder="Last Name" ng-model="newUser.last_name" ng-required="true" required>
-          <span class="text-danger" ng-bind="regErrors.email"></span>
           <input type="email" class="form-control" placeholder="Email" ng-model="newUser.email" ng-required="true" required>
+          <input type="password" class="form-control" placeholder="Password" ng-model="newUser.password" ng-required="true" required ng-minlength="8" ng-maxlength="15">
           <span>* Passwords must be 8-15 characters long</span>
-          <input type="password" class="form-control" placeholder="* Password" ng-model="newUser.password" ng-required="true" required ng-minlength="8" ng-maxlength="15">
-          <span class="text-danger" ng-bind="regErrors.confirm"></span>
-          <input type="password" class="form-control" placeholder="* Confirm password" ng-model="newUser.confirm" ng-required="true" required>
           <button ng-disabled="regForm.$invalid" ng-click="register()" class="btn btn-success form-control">Register</button>
         </form>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary form-control">Sign in with LinkedIn</button>
+        <p>Already have an account? <a id="closeReg" data-toggle="modal" href="#loginModal">Log in</a></p>
       </div>
     </div>
   </div>
