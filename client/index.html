@@ -18,6 +18,8 @@
     <script src="angular/app.js"></script>
     <script src="angular/lettuceFactory.js"></script>
     <script src="angular/usersController.js"></script>
+    <script src="angular/linkedInController.js"></script>
+    <script src="angular/facebookController.js"></script>
     <script type="text/javascript">
     $(document).ready( function () {
       $('.modal').on('hidden.bs.modal', function () {
@@ -48,7 +50,7 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a ng-hide="user" data-toggle="modal" href="#loginModal">Log in</a></li>
-            <li><a ng-hide="user" data-toggle="modal" href="#registerModal">Register</a></li>
+            <!-- <li><a ng-hide="user" data-toggle="modal" href="#registerModal">Register</a></li> -->
             <li><a ng-show="user" href="#/dashboard">Profile</a></li>
             <li><a ng-show="user" href="" ng-click="logOut()">Log out</a></li>
           </ul>
@@ -60,12 +62,14 @@
   <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
-      <!-- <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Login</h4>
-      </div> -->
       <div class="modal-body">
-        <button class="btn btn-primary form-control">Log in with LinkedIn</button>
+        <div class="text-center" ng-controller="linkedInController">
+          <img class="social-btn" src="img/linkedin-login-button.png" alt="Sign up with LinkedIn" ng-click="logIn()">
+        </div>
+        <div class="btn-space"></div>
+        <div class="text-center" ng-controller="facebookController">
+          <img class="social-btn" src="img/facebook-login-button.png" alt="Sign up with Facebook" ng-click="logIn()">
+        </div>
         <div>
           <span>or</span>
           <hr>
@@ -91,7 +95,13 @@
         <!-- <h4 class="modal-title" id="myModalLabel">Register</h4> -->
       <!-- </div> -->
       <div class="modal-body">
-        <button class="btn btn-primary form-control">Register with LinkedIn</button>
+        <div class="text-center" ng-controller="linkedInController">
+          <img class="social-btn" src="img/linkedin-login-button.png" alt="Sign up with LinkedIn" ng-click="logIn()">
+        </div>
+        <div class="btn-space"></div>
+        <div class="text-center" ng-controller="facebookController">
+          <img class="social-btn" src="img/facebook-login-button.png" alt="Sign up with Facebook" ng-click="logIn()">
+        </div>
         <div>
           <span>or</span>
           <hr>

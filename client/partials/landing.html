@@ -1,24 +1,21 @@
-<div class="nav-space" id="landing">
-  <div class="container">
+<div id="landing">
+  <div class="boxed text-center">
+    <h1>Don't eat lonely.</h1>
+    <h2 class="subtitle">Find people eating now</h2>
     <div class="row">
-      <div class="col-lg-8">
-        <div class="boxed">
-          <h1>Who is eating around you?</h1>
-          <h2 class="subtitle">Never go to lunch alone again</h2>
-          <form>
-            <div class="row">
-              <div class="col-sm-10">
-                <input type="text" class="form-control" placeholder="Your location">
-              </div>
-              <div class="col-sm-2 text-right">
-                <button type="submit" class="btn btn-theme">Search</button>
-              </div>
-            </div>
-            <input type="date">
-            <input type="time">
-          </form>
-        </div>       
-      </div>
+      <form class="col-sm-10 col-sm-offset-1">
+        <div class="input-group">
+          <span id="locationInSpan" class="input-group-addon">
+            <input id="locationInput" type="text" placeholder="Where?">
+          </span>
+          <input type="text" class="form-control" placeholder="What?">
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-theme">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>
+        </div>
+      </form>
     </div>
-  </div>
+  </div>       
 </div>

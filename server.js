@@ -3,7 +3,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
-var flash = require('connect-flash');
+// var flash = require('connect-flash');
 
 var app = express();
 app.use(express.static(path.join(__dirname, './client')));

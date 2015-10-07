@@ -1,13 +1,13 @@
-.nav-space {
+/*.nav-space {
   padding-top: 50px;
-}
+}*/
 
 #landing {   
   background-color: #444;
-  background-image: url(./young-people-eating.jpg);
-  margin-top: -20px;
-  margin-bottom: -20px;
-  padding-top: 150px;
+  background-image: url(./img/young-people-eating.jpg);
+  margin-top: 50px;
+  /*margin-bottom: -20px;*/
+  /*padding-top: 150px;*/
   background-attachment: relative;
   background-position: center center;
   min-height: 650px;
@@ -34,18 +34,19 @@
 h2.subtitle {
   color: #fff;
   font-size: 20px;
+  margin-top: 300px;
 }
 
 .boxed {
   background-color: rgba(0,0,0,0.5);
   display: inline-block;
   padding: 1em;
+  height: 650px;
 }
 
 .btn-theme {
   color: #fff;
   background-color: #fd680d;
-  margin-top: 5px;
 }
 
 .no-pad {
@@ -54,6 +55,17 @@ h2.subtitle {
 .no-mar {
   margin: 0;
 }
-#search-button {
-  padding: 20px 16px;
+#locationInput {
+  border: none;
+  padding: 6px 12px;
+  height: 32px;
+}
+#locationInSpan {
+  padding: 0;
+}
+.social-btn {
+  cursor: pointer;
+}
+.btn-space {
+  height: 4px;
 }
