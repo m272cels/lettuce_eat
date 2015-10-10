@@ -15,8 +15,6 @@ lettuceEat.factory('lettuceFactory', function ($http) {
   }
   factory.registerUser = function (newUser, callback) {
     $http.post('/users/register', newUser).then( function (response) {
-        console.log("success response");
-        console.log(response);
         callback(response.data);
       });
   }
@@ -24,6 +22,13 @@ lettuceEat.factory('lettuceFactory', function ($http) {
     $http.get('/users/this').then( function (response) {
       callback(response.data);      
     });
+  }
+  factory.facebookLogin = function (callback) {
+    console.log('ng fb login start')
+    $http.get('/auth/facebook').then( function (response) {
+      console.log('ng fb login end')
+      callback(response.data);
+    })
   }
 
   // factory.getUserById = function (id, callback) {

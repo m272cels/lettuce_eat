@@ -1,4 +1,4 @@
-// var items = require('./../server/controllers/items');
+var socials = require('./../server/controllers/socials');
 var users = require('./../server/controllers/users');
 
 module.exports = function (app) {
@@ -20,6 +20,14 @@ module.exports = function (app) {
 
   app.get('/users/this', function (req, res) {
     res.json(req.user);
+  });
+
+  app.get('/auth/facebook', function (req, res) {
+    socials.fbLogIn(req, res);
+  });
+
+  app.get('/auth/facebook/callback', function (req, res) {
+    socials.fbLogIn(req, res);
   });
 
 }

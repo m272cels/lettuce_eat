@@ -3,7 +3,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
-// var flash = require('connect-flash');
+// var cors = require('cors');
 
 var app = express();
 app.use(express.static(path.join(__dirname, './client')));
@@ -16,7 +16,7 @@ app.use(session({
   saveUninitialized: true,
   resave: true
 }));
-// app.use(flash());
+// app.use(cors());
 app.use(passport.initialize());
 app.use(passport.session());
 

@@ -12,7 +12,13 @@ var UserSchema = mongoose.Schema({
     password: String
   },
   linkedin: {
-    
+
+  },
+  facebook: {
+    id: String,
+    token: String,
+    first_name: String,
+    last_name: String
   }
   // events: [{type: Schema.Types.ObjectId, ref: 'Event'}]
 });
