@@ -18,3 +18,7 @@ lettuceEat.config( function ($routeProvider) {
       redirectTo: '/landing'
     });
 });
+
+lettuceEat.config( function () {
+  //add some interceptor middleware here to check whether users are logged in and redirect
+})

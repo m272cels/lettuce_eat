@@ -18,8 +18,8 @@
     <script src="angular/app.js"></script>
     <script src="angular/lettuceFactory.js"></script>
     <script src="angular/usersController.js"></script>
-    <script src="angular/linkedInController.js"></script>
-    <script src="angular/facebookController.js"></script>
+    <!-- // <script src="angular/linkedInController.js"></script> -->
+    <!-- // <script src="angular/facebookController.js"></script> -->
     <script type="text/javascript">
     $(document).ready( function () {
       $('.modal').on('hidden.bs.modal', function () {
@@ -63,15 +63,15 @@
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <div class="text-center" ng-controller="linkedInController">
+        <div class="text-center">
           <img class="social-btn" src="img/linkedin-login-button.png" alt="Sign up with LinkedIn" ng-click="logIn()">
         </div>
         <!-- <div class="btn-space"></div>
-        <div class="text-center" ng-controller="facebookController">
+        <div class="text-center">
           <img class="social-btn" src="img/facebook-login-button.png" alt="Sign up with Facebook" ng-click="logIn()">
         </div> -->
         <div class="btn-space"></div>
-        <div class="text-center" ng-controller="facebookController">
+        <div class="text-center">
           <a href="/auth/facebook"><img class="social-btn" src="img/facebook-login-button.png" alt="Sign up with Facebook"></a>
         </div>
         <div>
@@ -99,11 +99,11 @@
         <!-- <h4 class="modal-title" id="myModalLabel">Register</h4> -->
       <!-- </div> -->
       <div class="modal-body">
-        <div class="text-center" ng-controller="linkedInController">
+        <div class="text-center">
           <img class="social-btn" src="img/linkedin-login-button.png" alt="Sign up with LinkedIn" ng-click="logIn()">
         </div>
         <div class="btn-space"></div>
-        <div class="text-center" ng-controller="facebookController">
+        <div class="text-center">
           <img class="social-btn" src="img/facebook-login-button.png" alt="Sign up with Facebook" ng-click="logIn()">
         </div>
         <div>

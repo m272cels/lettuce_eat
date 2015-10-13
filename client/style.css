@@ -1,6 +1,6 @@
-/*.nav-space {
-  padding-top: 50px;
-}*/
+.nav-space {
+  margin-top: 50px;
+}
 
 #landing {   
   background-color: #444;
@@ -38,7 +38,7 @@ h2.subtitle {
 }
 
 .boxed {
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.7);
   display: inline-block;
   padding: 1em;
   height: 650px;
@@ -49,12 +49,12 @@ h2.subtitle {
   background-color: #fd680d;
 }
 
-.no-pad {
+/*.no-pad {
   padding: 0;
 }
 .no-mar {
   margin: 0;
-}
+}*/
 #locationInput {
   border: none;
   padding: 6px 12px;
