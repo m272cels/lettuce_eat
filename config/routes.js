@@ -1,3 +1,4 @@
+var yelps = require('./../server/controllers/yelps');
 var socials = require('./../server/controllers/socials');
 var users = require('./../server/controllers/users');
 
@@ -30,4 +31,7 @@ module.exports = function (app) {
     socials.fbLogIn(req, res);
   });
 
+  app.post('/yelp/search', function (req, res) {
+    yelps.search(req, res);
+  })
 }

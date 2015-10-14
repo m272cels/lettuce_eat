@@ -2,7 +2,7 @@ lettuceEat.controller('usersController', function ($scope, $location, lettuceFac
 
   lettuceFactory.getUser( function (user) {
     if (!user) {
-      $location.path('/landing');
+      $location.path('/');
     }
     else {
       $scope.user = user;

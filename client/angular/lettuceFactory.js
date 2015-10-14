@@ -23,12 +23,19 @@ lettuceEat.factory('lettuceFactory', function ($http) {
       callback(response.data);      
     });
   }
-  factory.facebookLogin = function (callback) {
-    console.log('ng fb login start')
-    $http.get('/auth/facebook').then( function (response) {
-      console.log('ng fb login end')
-      callback(response.data);
-    })
+  // factory.facebookLogin = function (callback) {
+  //   console.log('ng fb login start')
+  //   $http.get('/auth/facebook').then( function (response) {
+  //     console.log('ng fb login end')
+  //     callback(response.data);
+  //   })
+  // }
+  factory.findRestaurant = function (searchTerms, callback) {
+    console.log(searchTerms);
+    $http.post("/yelp/search", searchTerms).then( function () {
+      // console.log("got here");
+    });
+    callback();
   }
 
   // factory.getUserById = function (id, callback) {

@@ -5,20 +5,23 @@ var lettuceEat = angular.module('lettuceEat', ['ngRoute']);
 
 lettuceEat.config( function ($routeProvider) {
   $routeProvider
-    .when('/landing', {
-      templateUrl: '/partials/landing.html'
+    .when('/', {
+      templateUrl: '/partials/landing.html',
+      controller: 'usersController'
     })
     .when('/dashboard', {
-      templateUrl: '/partials/dashboard.html'
+      templateUrl: '/partials/dashboard.html',
+      controller: 'usersController'
     })
     .when('/event/location', {
-      templateUrl: '/partials/search.html'
+      templateUrl: '/partials/search.html',
+      controller: 'eventsController'
     })
     .otherwise({
-      redirectTo: '/landing'
+      redirectTo: '/'
     });
 });
 
 lettuceEat.config( function () {
   //add some interceptor middleware here to check whether users are logged in and redirect
-})
+});
