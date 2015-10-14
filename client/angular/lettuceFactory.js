@@ -32,8 +32,8 @@ lettuceEat.factory('lettuceFactory', function ($http) {
   // }
   factory.findRestaurant = function (searchTerms, callback) {
     console.log(searchTerms);
-    $http.post("/yelp/search", searchTerms).then( function () {
-      // console.log("got here");
+    $http.post("/yelp/search", searchTerms).then( function (response) {
+      console.log(response.data);
     });
     callback();
   }
