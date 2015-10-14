@@ -42,14 +42,23 @@ module.exports = {
       response.on('data', function (data) {
         // process.stdout.write(data);
         // console.log('doing res.json')
-        return res.json(data);    
-        // yelpResponse = data;
+        // return res.json(data);    
+        if (!yelpResponse) {
+          yelpResponse = data;
+        }
+        else {
+          yelpResponse = Buffer.concat([yelpResponse, data]);
+        }
         // process.nextTick( function () {
           // res.json(data);
         // })
       });
       response.on('end', function () {
         console.log("response ended");
+        console.log(yelpResponse);
+        console.log(yelpResponse.length);
+        console.log(yelpResponse.toString());
+        res.json(yelpResponse.toString());
       });
     });
     request.on('error', function (err) {
