@@ -11,11 +11,14 @@
           </div>
           <div class="col-xs-2 no-pad">
             <button type="button" class="btn btn-theme btn-lg no-mar" id="search-button" aria-label="Search" ng-click="search()">
-            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-          </button>
+              <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </button>
           </div>
         </div>
       </form>
+    </div>
+    <div ng-repeat="restaurant in restaurants">
+      <p ng-bind="restaurant.name"></p>
     </div>
   </div>
 </div>

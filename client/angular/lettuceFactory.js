@@ -1,6 +1,7 @@
 lettuceEat.factory('lettuceFactory', function ($http) {
   // var users = [];
   // var user = {};
+  var restaurants = {};
 
   var factory = {};
   factory.logIn = function (userInfo, callback) {
@@ -34,8 +35,12 @@ lettuceEat.factory('lettuceFactory', function ($http) {
     console.log(searchTerms);
     $http.post("/yelp/search", searchTerms).then( function (response) {
       console.log(response.data);
+      restaurants = response.data;
+      callback(restaurants);
     });
-    callback();
+  }
+  factory.getRestaurants = function (callback) {
+    callback(restaurants);
   }
 
   // factory.getUserById = function (id, callback) {

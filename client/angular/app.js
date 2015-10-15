@@ -13,7 +13,7 @@ lettuceEat.config( function ($routeProvider) {
       templateUrl: '/partials/dashboard.html',
       controller: 'usersController'
     })
-    .when('/event/location', {
+    .when('/search', {
       templateUrl: '/partials/search.html',
       controller: 'eventsController'
     })
