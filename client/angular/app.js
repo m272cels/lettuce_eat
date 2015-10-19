@@ -13,8 +13,16 @@ lettuceEat.config( function ($routeProvider) {
       templateUrl: '/partials/dashboard.html',
       controller: 'usersController'
     })
-    .when('/search', {
+    .when('/events', {
       templateUrl: '/partials/search.html',
+      controller: 'eventsController'
+    })
+    .when('/events/create/1', {
+      templateUrl: '/partials/create-1.html',
+      controller: 'eventsController'
+    })
+    .when('/events/create/2', {
+      templateUrl: '/partials/create-2.html',
       controller: 'eventsController'
     })
     .otherwise({

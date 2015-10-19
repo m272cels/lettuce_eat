@@ -1,0 +1,40 @@
+<div class="nav-space">
+  <div class="container">
+    <div class="row">
+      <h2>Create your event: Time</h2>
+      <h2>Your chosen venue:</h2>
+      <div class="row">
+        <div class="col-sm-4">
+          <p ng-bind="newEvent.location.name"></p>
+          <img src="{{newEvent.location.rating_img_url}}" alt="rating = {{newEvent.location.rating}} stars">
+          <a href="{{newEvent.location.url}}">See Yelp page</a>
+        </div>
+        <div class="col-sm-4">
+          <p ng-bind="newEvent.location.location.display_address[0]"></p>
+          <p ng-bind="newEvent.location.location.display_address[1]"></p>
+          <p ng-bind="newEvent.location.location.display_address[2]"></p>
+        </div>
+        <button class="btn btn-primary" ng-click="chooseLocation(newEvent.location.id)">Not here?</button>
+      </div>
+      <h2>Your event details:</h2>
+      <form>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Name your event" ng-model="newEvent.name">
+        </div>
+        <div class="form-group">
+          <div class="col-sm-6">
+            <!-- datepicker -->
+            <input type="date" class="form-control" ng-model="newEvent.date">
+          </div>
+          <div class="col-sm-6">
+            <!-- timepicker -->
+            <input type="time" class="form-control" ng-model="newEvent.time">
+          </div>
+        </div>
+        <div class="text-right">
+          <button class="btn btn-success" ng-click="createEvent()">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

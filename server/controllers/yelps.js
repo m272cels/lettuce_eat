@@ -5,16 +5,17 @@ var request = require('request');
 
 module.exports = {
   search: function (req, res) {
+    console.log(req.body);
     var req_data = {
       url: "https://api.yelp.com/v2/search/?category_filter=restaurants&location=sf",
       method: 'GET'
     }
-    if (req.body.find) {
-      if (req.body.find.location) {
-        req_data.url = req_data.url.substring(0, req_data.url.length-2) + req.body.find.location;
+    if (req.body) {
+      if (req.body.location) {
+        req_data.url = req_data.url.substring(0, req_data.url.length-2) + req.body.location;
       }
-      if (req.body.find.term) {
-        req_data.url += "&term="+req.body.find.term;
+      if (req.body.term) {
+        req_data.url += "&term="+req.body.term;
       }
     }
     var oauth = OAuth({

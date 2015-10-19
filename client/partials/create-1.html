@@ -1,0 +1,36 @@
+<div class="nav-space">
+  <div class="container">
+    <div class="row">
+      <h2>Create your event: Location</h2>
+      <form>
+        <div class="form-group">
+          <div class="col-xs-10 no-pad">
+            <input type="text" class="form-control" placeholder="Location" ng-model="find.location">
+            <input type="text" class="form-control" placeholder="Restaurant, Cuisine, or Dish" ng-model="find.term">
+          </div>
+          <div class="col-xs-2 no-pad">
+            <button type="button" class="btn btn-theme btn-lg no-mar" id="search-button" aria-label="Search" ng-click="findRestaurant()">
+              <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div ng-show="loading && loading !== undefined">Loading...</div>
+    <div ng-show="!loading && loading !== undefined">
+      <h2>Pick somewhere to eat:</h2>
+      <div class="row" ng-repeat="restaurant in restaurants">
+        <div class="col-sm-4">
+          <p ng-bind="restaurant.name"></p>
+          <img src="{{restaurant.rating_img_url}}" alt="rating= {{restaurant.rating}}">
+          <a href="{{restaurant.url}}">See Yelp page</a>
+        </div>
+        <div class="col-sm-4">
+          <p ng-bind="restaurant.location.display_address[0]"></p>
+          <p ng-bind="restaurant.location.display_address[1]"></p>
+          <p ng-bind="restaurant.location.display_address[2]"></p>
+        </div>
+        <button class="btn btn-primary" ng-click="chooseLocation(restaurant)">Eat Here!</button>
+      </div>
+  </div>
+</div>
