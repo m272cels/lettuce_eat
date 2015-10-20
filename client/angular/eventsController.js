@@ -14,8 +14,11 @@ lettuceEat.controller('eventsController', function ($scope, $location, lettuceFa
     $scope.restaurants = data.businesses;
   });
 
+  lettuceFactory.getEvents( function (data) {
+    $scope.events = data;
+  });
+
   lettuceFactory.getNewEventLocation( function (data) {
-    console.log(data);
     $scope.newEvent = data;
     if (!data.location) {
       $scope.newEvent = {
@@ -59,9 +62,14 @@ lettuceEat.controller('eventsController', function ($scope, $location, lettuceFa
 
   $scope.createEvent = function () {
     // console.log($scope.newEvent);
-    lettuceFactory.createEvent($scope.newEvent, function () {
+    lettuceFactory.createEvent($scope.newEvent, function (eventID) {
       console.log("back to eventsController");
+      $location.path('/events/'+eventID);
     })
+  }
+
+  $scope.findEvents = function () {
+    $location.path('/events');
   }
 
   $scope.useCurrentLocation = function () {

@@ -38,5 +38,9 @@ module.exports = function (app) {
 
   app.post('/events', function (req, res) {
     events.create(req, res);
+  });
+
+  app.get('/events', function (req, res) {
+    events.index(req, res);
   })
 }

@@ -66,5 +66,33 @@ module.exports = {
       // console.log("body: ", body);
       res.json(JSON.parse(body));
     });
+  },
+  findBiz: function (yelpID) {
+    // console.log(yelpID);
+    var req_data = {
+      url: "https://api.yelp.com/v2/business/" + yelpID,
+      method: 'GET'
+    }
+    var oauth = OAuth({
+      consumer: {
+        public: configAuth.yelpAuth.consumerKey,
+        secret: configAuth.yelpAuth.consumerSecret
+      },
+      signature_method: 'HMAC-SHA1'
+    });
+    var token = {
+      public: configAuth.yelpAuth.token,
+      secret: configAuth.yelpAuth.tokenSecret
+    };
+    request({
+      url: req_data.url,
+      method: req_data.method,
+      headers: oauth.toHeader(oauth.authorize(req_data, token))
+    }, function (error, response, body) {
+      // console.log(error);
+      console.log(body);
+      return JSON.parse(body);
+      // res.json(JSON.parse(body));
+    });
   }
 }

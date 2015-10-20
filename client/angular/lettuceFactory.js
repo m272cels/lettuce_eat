@@ -53,10 +53,16 @@ lettuceEat.factory('lettuceFactory', function ($http) {
   factory.createEvent = function (eventInfo, callback) {
     eventInfo.location = eventInfo.location.id;
     // console.log(eventInfo);
-    $http.post("/events", eventInfo).then( function () {
-      callback();
+    $http.post("/events", eventInfo).then( function (response) {
+      console.log(response)
+      callback(response.data.id);
     }); 
-
+  }
+  factory.getEvents = function (callback) {
+    $http.get("/events").then( function (response) {
+      console.log(response);
+      callback(response.data);
+    })
   }
   // factory.getUserById = function (id, callback) {
   //   $http.get('/user/'+id).then( function (response) {

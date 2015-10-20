@@ -17,18 +17,21 @@
       </form>
     </div>
     <h2>Events happening soon:</h2>
-    <div class="row" ng-repeat="restaurant in restaurants">
+    <div class="row" ng-repeat="event in events">
       <div class="col-sm-4">
-        <p ng-bind="restaurant.name"></p>
+        <p ng-bind="event.name"></p>
+        <!-- <p ng-bind="restaurant.name"></p>
         <img src="{{restaurant.rating_img_url}}" alt="rating= {{restaurant.rating}}">
-        <a href="{{restaurant.url}}">See Yelp page</a>
+        <a href="{{restaurant.url}}">See Yelp page</a> -->
       </div>
       <div class="col-sm-4">
-        <p ng-bind="restaurant.location.display_address[0]"></p>
+        <p ng-bind="event.location"></p>
+        <p ng-bind="event.datetime"></p>
+        <!-- <p ng-bind="restaurant.location.display_address[0]"></p>
         <p ng-bind="restaurant.location.display_address[1]"></p>
-        <p ng-bind="restaurant.location.display_address[2]"></p>
+        <p ng-bind="restaurant.location.display_address[2]"></p> -->
       </div>
-      <button class="btn btn-primary" ng-click="">Eat Here!</button>
+      <button class="btn btn-primary" ng-click="">Join!</button>
     </div>
   </div>
 </div>

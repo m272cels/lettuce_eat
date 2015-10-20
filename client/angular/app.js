@@ -25,6 +25,10 @@ lettuceEat.config( function ($routeProvider) {
       templateUrl: '/partials/create-2.html',
       controller: 'eventsController'
     })
+    .when('/events/:id', {
+      templateUrl: '/partials/event.html',
+      controller: 'eventsController'
+    })
     .otherwise({
       redirectTo: '/'
     });

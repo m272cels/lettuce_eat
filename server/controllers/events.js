@@ -1,18 +1,38 @@
-var Event = require('mongoose').require('Event');
+var Event = require('mongoose').model('Event');
+var yelps = require('./yelps');
 
 module.exports = {
   create: function (req, res) {
-    console.log(req.body);
-    // console.log(typeof req.body.time);
-    // console.log(typeof req.body.date);
-    // console.log(typeof req.body.datetimeLocal);
-    var time = Date(req.body.time);
-    var date = Date(req.body.date);
-    var datetime = Date(req.body.datetimeLocal);
-    console.log(time);
-    console.log(date);
-    console.log(datetime);
-    // console.log(req.body.time + req.body.date);
-
+    var newEvent = new Event();
+    newEvent.name = req.body.name;
+    newEvent.datetime = req.body.date.substring(0,11) + req.body.time.substring(11);
+    newEvent.location = req.body.location;
+    newEvent.save( function (err) {
+      // if (err) { console.log(err); }
+      res.json(newEvent);
+      // console.log(newEvent);
+    });
+  },
+  index: function (req, res) {
+    Event.find({}, function (err, results) {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        // console.log(results);
+        // results.map( function (event) {
+        for (var i = 0; i < results.length; i++) {
+          // console.log(results[i].location);
+          // console.log(yelps.findBiz);
+          results[i].location = yelps.findBiz(results[i].location);
+          // console.log(event);
+          // console.log(results[i].location);
+        }
+        // console.log(results);
+        process.nextTick( function () {
+          res.json(results);
+        });
+      }
+    })
   }
 }
