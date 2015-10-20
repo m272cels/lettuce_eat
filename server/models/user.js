@@ -20,7 +20,7 @@ var UserSchema = mongoose.Schema({
     first_name: String,
     last_name: String
   }
-  // events: [{type: Schema.Types.ObjectId, ref: 'Event'}]
+  events: [{type: Schema.Types.ObjectId, ref: 'Event'}]
 });
 // UserSchema.plugin(deepPopulate);
 // UserSchema.pre('save',

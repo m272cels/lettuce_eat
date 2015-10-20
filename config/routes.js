@@ -1,5 +1,6 @@
 var yelps = require('./../server/controllers/yelps');
 var socials = require('./../server/controllers/socials');
+var events = require('./../server/controllers/events');
 var users = require('./../server/controllers/users');
 
 module.exports = function (app) {
@@ -33,5 +34,9 @@ module.exports = function (app) {
 
   app.post('/yelp/search', function (req, res) {
     yelps.search(req, res);
+  });
+
+  app.post('/events', function (req, res) {
+    events.create(req, res);
   })
 }

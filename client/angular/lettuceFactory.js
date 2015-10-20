@@ -52,10 +52,10 @@ lettuceEat.factory('lettuceFactory', function ($http) {
   }
   factory.createEvent = function (eventInfo, callback) {
     eventInfo.location = eventInfo.location.id;
-    console.log(eventInfo);
-    // $http.post("/events", eventInfo).then( function () {
+    // console.log(eventInfo);
+    $http.post("/events", eventInfo).then( function () {
       callback();
-    // }); 
+    }); 
 
   }
   // factory.getUserById = function (id, callback) {
