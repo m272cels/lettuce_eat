@@ -1,5 +1,6 @@
 var Event = require('mongoose').model('Event');
 var yelps = require('./yelps');
+var async = require('async');
 
 module.exports = {
   create: function (req, res) {
@@ -21,16 +22,15 @@ module.exports = {
       else {
         // console.log(results);
         // results.map( function (event) {
-        for (var i = 0; i < results.length; i++) {
-          // console.log(results[i].location);
-          // console.log(yelps.findBiz);
-          results[i].location = yelps.findBiz(results[i].location);
-          // console.log(event);
-          // console.log(results[i].location);
-        }
-        // console.log(results);
-        process.nextTick( function () {
-          res.json(results);
+        async.map(results, yelps.findBiz, function (err, results) {
+          if (err) {
+            console.log(err);
+          }
+          else {
+            // console.log(results);
+            console.log('async callback')
+            res.json(results);            
+          }
         });
       }
     })

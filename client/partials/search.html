@@ -20,13 +20,19 @@
     <div class="row" ng-repeat="event in events">
       <div class="col-sm-4">
         <p ng-bind="event.name"></p>
-        <!-- <p ng-bind="restaurant.name"></p>
-        <img src="{{restaurant.rating_img_url}}" alt="rating= {{restaurant.rating}}">
-        <a href="{{restaurant.url}}">See Yelp page</a> -->
+        <p>Host: <span ng-bind="event.host"></span></p>
+        <p ng-bind="event.datetime | date : 'h:mm a'"></p>
+        <p ng-bind="event.datetime | date: 'EEEE, MMMM d, y'"></p>
+        <!-- <a href="{{restaurant.url}}">See Yelp page</a> -->
       </div>
       <div class="col-sm-4">
-        <p ng-bind="event.location"></p>
-        <p ng-bind="event.datetime"></p>
+        <p ng-bind="event.location.name"></p>
+        <div ng-repeat="line in event.location.location.display_address">
+          <p ng-bind="line"></p>
+        </div>
+        <!-- <p ng-bind="event.locationInfo.location.display_address[0]"></p>
+        <p ng-bind="event.locationInfo.location.display_address[1]"></p>
+        <p ng-bind="event.locationInfo.location.display_address[2]"></p> -->
         <!-- <p ng-bind="restaurant.location.display_address[0]"></p>
         <p ng-bind="restaurant.location.display_address[1]"></p>
         <p ng-bind="restaurant.location.display_address[2]"></p> -->

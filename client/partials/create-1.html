@@ -26,11 +26,13 @@
           <a href="{{restaurant.url}}">See Yelp page</a>
         </div>
         <div class="col-sm-4">
-          <p ng-bind="restaurant.location.display_address[0]"></p>
-          <p ng-bind="restaurant.location.display_address[1]"></p>
-          <p ng-bind="restaurant.location.display_address[2]"></p>
+          <p ng-repeat="line in restaurant.location.display_address" ng-bind="line"></p>
+          <!-- <p ng-bind="restaurant.location.display_address[1]"></p> -->
+          <!-- <p ng-bind="restaurant.location.display_address[2]"></p> -->
         </div>
-        <button class="btn btn-primary" ng-click="chooseLocation(restaurant)">Eat Here!</button>
+        <div class="col-sm-4">
+          <button class="btn btn-primary" ng-click="chooseLocation(restaurant)">Eat Here!</button>
+        </div>
       </div>
   </div>
 </div>

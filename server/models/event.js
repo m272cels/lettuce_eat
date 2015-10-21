@@ -5,6 +5,7 @@ var EventSchema = mongoose.Schema({
   name: String,
   datetime: Date,
   location: String,
+  // locationInfo: Object,
   host: {type: Schema.Types.ObjectId, ref: 'User'},
   attendees: [{type: Schema.Types.ObjectId, ref: 'User'}]
 });

@@ -67,10 +67,10 @@ module.exports = {
       res.json(JSON.parse(body));
     });
   },
-  findBiz: function (yelpID) {
+  findBiz: function (event, callback) {
     // console.log(yelpID);
     var req_data = {
-      url: "https://api.yelp.com/v2/business/" + yelpID,
+      url: "https://api.yelp.com/v2/business/" + event.location,
       method: 'GET'
     }
     var oauth = OAuth({
@@ -90,8 +90,18 @@ module.exports = {
       headers: oauth.toHeader(oauth.authorize(req_data, token))
     }, function (error, response, body) {
       // console.log(error);
-      console.log(body);
-      return JSON.parse(body);
+      // console.log(body);
+      if (error) {
+        return callback(true);
+      }
+      // console.log(JSON.parse(body));
+      // console.log(event)
+      var eve = event.toObject();
+      eve.location = JSON.parse(body);
+      // console.log(eve);
+      // console.log('findBiz', event.id);
+      callback(null, eve);
+      // return JSON.parse(body);
       // res.json(JSON.parse(body));
     });
   }
